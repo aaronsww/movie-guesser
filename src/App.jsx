@@ -4,6 +4,12 @@ import axios from "axios";
 
 function App() {
   const [movieData, setMovieData] = useState({});
+  const [guess, setGuess] = useState("");
+
+  function checkGuess() {
+    if (guess === movieData.title) alert("You are correct!");
+    else alert("Try Again");
+  }
 
   const movies = [
     { title: "Avatar", year: 2009 },
@@ -14,7 +20,7 @@ function App() {
     { title: "The Lion King", year: 2019 },
     { title: "The Avengers", year: 2012 },
     { title: "Inception", year: 2010 },
-    { title: "Frozen II", year: 2019 },
+    { title: "Blade Runner 2049", year: 2017 },
     { title: "Avengers: Infinity War", year: 2018 },
   ];
 
@@ -53,6 +59,12 @@ function App() {
           </div>
         )}
       </div>
+      <input
+        type="text"
+        value={guess}
+        onChange={(e) => setGuess(e.target.value)}
+      />
+      <button onClick={checkGuess}>Check</button>
     </>
   );
 }

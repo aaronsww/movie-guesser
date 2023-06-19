@@ -16,10 +16,10 @@ export const movies = [
     title: "Fight Club",
     year: 1999,
     path: [
-      `${baseUrl}18-fight.jpg`,
-      `${baseUrl}48%20(368).jpg`,
       `${baseUrl}46%20(374).jpg`,
       `${baseUrl}64%20(280).jpg`,
+      `${baseUrl}48%20(368).jpg`,
+      `${baseUrl}18-fight.jpg`,
     ],
   },
   {
@@ -56,9 +56,9 @@ export const movies = [
     title: "Spider-Man: Into the Spider-Verse",
     year: 2018,
     path: [
-      `${baseUrl}Into_the_Spider-Verse_014.jpg`,
       `${baseUrl}Into_the_Spider-Verse_018.jpg`,
       `${baseUrl}Into_the_Spider-Verse_032.jpg`,
+      `${baseUrl}Into_the_Spider-Verse_014.jpg`,
       `${baseUrl}Into_the_Spider-Verse_054.jpg`,
     ],
   },
@@ -76,9 +76,9 @@ export const movies = [
     title: "Mission: Impossible - Fallout",
     year: 2018,
     path: [
-      `${baseUrl}Mission_Impossible_Fallout_022.jpg`,
       `${baseUrl}Mission_Impossible_Fallout_046.jpg`,
       `${baseUrl}Mission_Impossible_Fallout_052.jpg`,
+      `${baseUrl}Mission_Impossible_Fallout_022.jpg`,
       `${baseUrl}Mission_Impossible_Fallout_018.jpg`,
     ],
   },
@@ -186,9 +186,9 @@ export const movies = [
     title: "Inception",
     year: 2010,
     path: [
-      `${baseUrl}24%20(506).jpg`,
-      `${baseUrl}47%20(486).jpg`,
       `${baseUrl}36%20(503).jpg`,
+      `${baseUrl}47%20(486).jpg`,
+      `${baseUrl}24%20(506).jpg`,
       `${baseUrl}21%20(506).jpg`,
     ],
   },
@@ -207,19 +207,20 @@ export const movies = [
     year: 2019,
     path: [
       `${baseUrl}The_Joker_017.jpg`,
-      `${baseUrl}The_Joker_007.jpg`,
       `${baseUrl}The_Joker_051.jpg`,
+      `${baseUrl}The_Joker_007.jpg`,
+
       `${baseUrl}The_Joker_053.jpg`,
     ],
   },
   {
-    title: "Slumdog Millionaire",
-    year: 2010,
+    title: "Jurassic Park",
+    year: 1993,
     path: [
-      `${baseUrl}slumdog063.jpg`,
-      `${baseUrl}slumdog018.jpg`,
-      `${baseUrl}slumdog001.jpg`,
-      `${baseUrl}slumdog008.jpg`,
+      `${baseUrl}44%20(542).jpg`,
+      `${baseUrl}06%20(542).jpg`,
+      `${baseUrl}26%20(552).jpg`,
+      `${baseUrl}63%20(428).jpg`,
     ],
   },
   {
@@ -230,6 +231,16 @@ export const movies = [
       `${baseUrl}infinity033.jpg`,
       `${baseUrl}infinity030.jpg`,
       `${baseUrl}infinity058.jpg`,
+    ],
+  },
+  {
+    title: "The Shawshank Redemption",
+    year: 1994,
+    path: [
+      `${baseUrl}65%20(617).jpg`,
+      `${baseUrl}05%20(900).jpg`,
+      `${baseUrl}31%20(914).jpg`,
+      `${baseUrl}54%20(858).jpg`,
     ],
   },
 ];

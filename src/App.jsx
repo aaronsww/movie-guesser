@@ -12,6 +12,13 @@ function App() {
     movies[Math.floor(Math.random() * movies.length)]
   );
 
+  const [indicator, setIndicator] = useState(true);
+  
+  useEffect(() => {
+   if(guess === "")
+    setIndicator(true)
+  }, [guess]);
+
   // const [index, setIndex] = useState(0);
   // const [src, setSrc] = useState(
   //   `${randomMovie.path}${randomMovie.stills[index]}.jpg`
@@ -19,7 +26,7 @@ function App() {
   const [index, setIndex] = useState(0);
   const [src, setSrc] = useState(randomMovie.path[index]);
 
-  function reload() {
+  function handleClick() {
     if (index < randomMovie.path.length - 1) {
       setIndex(index + 1);
       // setSrc(`${movies[0].path}${movies[0].stills[index + 1]}.jpg`);
@@ -73,6 +80,7 @@ function App() {
 
   const handleInputChange = (event) => {
     setGuess(event.target.value);
+    setIndicator(false)
     const value = event.target.value;
 
     // Fetch movie title suggestions based on input value
@@ -81,23 +89,28 @@ function App() {
 
   return (
     <>
-    <input type="text" value={guess} onChange={handleInputChange} />
-      {guess.length > 0 && suggestions.length > 0 && (
-        <ul>
-          {suggestions.map((title) => (
-            <li
-              key={title}
-              onClick={() => {
-                setGuess(title);
-                setSuggestions([]);
-              }}
-            >
-              {title}
-            </li>
-          ))}
-        </ul>
-      )}
-      <button onClick={reload}>🔄</button>
+      <div className="search-bar">
+        <div className="search-btn">
+          <input placeholder="Search for a movie" type="text" value={guess} onChange={handleInputChange} />
+          {indicator && <button onClick={handleClick}>Skip Frame</button>}
+          {!indicator &&<button onClick={checkGuess}>Submit</button>}
+        </div>
+        {guess.length > 0 && suggestions.length > 0 && (
+          <ul className="suggestions">
+            {suggestions.map((title) => (
+              <li
+                key={title}
+                onClick={() => {
+                  setGuess(title);
+                  setSuggestions([]);
+                }}
+              >
+                {title}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       <div>
         {movieData && (
           <div key={movieData.id}>
@@ -110,8 +123,8 @@ function App() {
           </div>
         )}
       </div>
-      
-      <button onClick={checkGuess}>Check</button>
+
+   
     </>
   );
 }

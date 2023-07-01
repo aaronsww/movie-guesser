@@ -13,6 +13,7 @@
 
 .gif{
   height: 200px;
+  margin-top: 2%;
 }
 
 .search-bar{
@@ -23,6 +24,18 @@
 
 .search-btn{
   width: 80%;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 input[type="text"] {
@@ -43,4 +56,85 @@ input[type="text"] {
   border: 1px solid #ddd;
   border-radius: 4px;
   list-style-type: none;
+}
+.prompt{
+  font-size: 20px;
+  font-weight: 500;
+  color: dimgray;
+}
+.prompt>a:hover{
+  color: white;
+  cursor: pointer;
+}
+
+.movie-container{
+  margin-top: 2%;
+}
+
+.still-container{
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (max-width: 768px) {
+  .still {
+    width: 90%;
+  }
+
+  .search-btn {
+    width: 90%;
+  }
+
+  input[type="text"] {
+    width: 70%;
+  }
+
+  .suggestions {
+    width: 70%;
+  }
+
+  .still-container {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 610px) {
+
+  input[type="text"] {
+    width: 60%;
+    padding: 4px 7px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    outline: none;
+  }
+  
+
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+
+  .suggestions {
+    width: 60%;
+    font-size: 12px;
+  }
+
+  .prompt {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 2em;
+    line-height: 1.1;
+  }
+  
 }

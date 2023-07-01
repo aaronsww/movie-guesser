@@ -6,44 +6,26 @@ import axios from "axios";
 import rightGif from "./gifs/right/a.gif";
 import wrongGif from "./gifs/wrong/c.gif";
 
-// const rightGifs = [
-//  "./gifs/right/a.gif",
-//   "./gifs/right/b.gif",
-//   "./gifs/right/c.gif",
-//   "./gifs/right/d.gif",
-// ];
-
-// const wrongGifs = [
-//   "./gifs/wrong/c.gif",
-//  "./gifs/wrong/d.gif",
-
-// ];
-
 function App() {
   const [movieData, setMovieData] = useState({});
   const [guess, setGuess] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [correctGuess, setCorrectGuess] = useState(null);
+  const [hide, setHide] = useState(false);
   const [randomMovie, setRandomMovie] = useState(
     movies[Math.floor(Math.random() * movies.length)]
   );
 
   const [indicator, setIndicator] = useState(true);
-
-  // const [index, setIndex] = useState(0);
-  // const [src, setSrc] = useState(
-  //   `${randomMovie.path}${randomMovie.stills[index]}.jpg`
-  // );
   const [index, setIndex] = useState(0);
   const [src, setSrc] = useState(randomMovie.path[index]);
 
   function handleClick() {
     if (index < randomMovie.path.length - 1) {
       setIndex(index + 1);
-      // setSrc(`${movies[0].path}${movies[0].stills[index + 1]}.jpg`);
       setSrc(randomMovie.path[index + 1]);
     } else {
-      setIndicator(0);
+      setHide(true);
     }
   }
 
@@ -55,8 +37,8 @@ function App() {
         }&query=${randomMovie.title}&year=${randomMovie.year}`
       );
       setMovieData(response.data.results[0]);
-      // console.log(response.data.results[0]);
-      // console.log(movieData);
+      console.log(response.data.results[0]);
+      console.log(movieData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -80,17 +62,15 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(randomMovie);
+    // console.log(randomMovie);
     fetchData(randomMovie);
   }, [randomMovie]);
 
   function checkGuess() {
     if (guess === randomMovie.title) {
-      setRandomMovie(movies[Math.floor(Math.random() * movies.length)]);
       setGuess("");
       setIndicator(null);
       setCorrectGuess(true);
-      console.log(randomMovie);
     } else {
       setCorrectGuess(false);
       setIndicator(true);
@@ -99,15 +79,14 @@ function App() {
 
   const handleInputChange = (event) => {
     setGuess(event.target.value);
-    setIndicator(false);
     const value = event.target.value;
     fetchMovieSuggestions(value);
   };
 
-  // const getRandomGif = (gifs) => {
-  //   const randomIndex = Math.floor(Math.random() * gifs.length);
-  //   return gifs[randomIndex];
-  // };
+  function defeat() {
+    setHide(null);
+    setIndicator(null);
+  }
 
   return (
     <>
@@ -119,14 +98,10 @@ function App() {
             value={guess}
             onChange={handleInputChange}
           />
-          {indicator === true && (
-            <button onClick={handleClick}>Skip Frame</button>
-          )}
-          {indicator === false && <button onClick={checkGuess}>Submit</button>}
-          {indicator === 0 && <button>Out of skips</button>}
           {indicator === null && (
             <button onClick={() => window.location.reload()}>Next Movie</button>
           )}
+          {indicator === true && <button onClick={checkGuess}>Submit</button>}
         </div>
         {guess.length > 0 && suggestions.length > 0 && (
           <ul className="suggestions">
@@ -152,9 +127,19 @@ function App() {
         <img className="gif" src={wrongGif} alt="Wrong GIF" />
       )}
 
-      <div>
+      <div className="movie-container">
         {movieData && (
-          <div key={movieData.id}>
+          <div className="still-container" key={movieData.id}>
+            {hide === false && (
+              <button onClick={handleClick}>Next Frame</button>
+            )}
+            {hide === true && (
+              <div className="prompt">
+                <span>Out of skips!&nbsp;&nbsp;</span>
+                <a onClick={defeat}>Give up?</a>
+              </div>
+            )}
+            {hide === null && <h1>{movieData.title}</h1>}
             {/* <h2>{randomMovie.title}</h2> */}
             <img
               className="still"

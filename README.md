@@ -1,4 +1,4 @@
-# Github User Search App
+# Movie Guesser
 
 <a href="https://movie-guesser-2iyd.vercel.app/">Live Demonstartion.</a>
 

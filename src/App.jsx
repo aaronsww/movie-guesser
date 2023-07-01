@@ -93,7 +93,7 @@ function App() {
       <div className="search-bar">
         <div className="search-btn">
           <input
-            placeholder="Search for a movie"
+            placeholder="Type & select movie title"
             type="text"
             value={guess}
             onChange={handleInputChange}

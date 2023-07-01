@@ -3,7 +3,7 @@ import "./App.css";
 import { movies } from "./movieData.jsx";
 import axios from "axios";
 
-import rightGif from "./gifs/right/a.gif";
+import rightGif from "./gifs/right/d.gif";
 import wrongGif from "./gifs/wrong/c.gif";
 
 function App() {

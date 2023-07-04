@@ -63,7 +63,7 @@ export const movies = [
     ],
   },
   {
-    title: "Kill Bill Vol. 1",
+    title: "Kill Bill: Vol. 1",
     year: 2004,
     path: [
       `${baseUrl}05%20(547).jpg`,
@@ -173,7 +173,7 @@ export const movies = [
     ],
   },
   {
-    title: "The Wolf Of Wall Street",
+    title: "The Wolf of Wall Street",
     year: 2013,
     path: [
       `${baseUrl}52%20(1165).jpg`,

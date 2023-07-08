@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { movies } from "./movieData.jsx";
+import { movies } from "./movieData.js";
 import axios from "axios";
 
-import rightGif from "./gifs/right/d.gif";
-import wrongGif from "./gifs/wrong/c.gif";
+import b from "./gifs/right/b.gif";
+import c from "./gifs/right/c.gif";
+import d from "./gifs/right/d.gif";
+import e from "./gifs/right/e.gif";
+import f from "./gifs/right/f.gif";
+import g from "./gifs/right/g.gif";
+
+import cw from "./gifs/wrong/c.gif";
+import dw from "./gifs/wrong/d.gif";
+import ew from "./gifs/wrong/e.gif";
+import fw from "./gifs/wrong/f.gif";
+import gw from "./gifs/wrong/g.gif";
+import hw from "./gifs/wrong/h.gif";
 
 function App() {
   const [movieData, setMovieData] = useState({});
@@ -19,6 +30,20 @@ function App() {
   const [indicator, setIndicator] = useState(true);
   const [index, setIndex] = useState(0);
   const [src, setSrc] = useState(randomMovie.path[index]);
+  const correctGifs = [b, c, d, e, f, g];
+  const wrongGifs = [cw, dw, ew, fw, gw, hw];
+
+  const [gifPath, setGifPath] = useState("");
+
+  useEffect(() => {
+    let randomGifPath = "";
+    if (correctGuess === true) {
+      randomGifPath = correctGifs[Math.floor(Math.random() * correctGifs.length)];
+    } else if (correctGuess === false) {
+      randomGifPath = wrongGifs[Math.floor(Math.random() * wrongGifs.length)];
+    }
+    setGifPath(randomGifPath);
+  }, [correctGuess]);
 
   function handleClick() {
     if (index < randomMovie.path.length - 1) {
@@ -121,10 +146,10 @@ function App() {
       </div>
 
       {correctGuess === true && (
-        <img className="gif" src={rightGif} alt="Correct GIF" />
+        <img className="gif" src={gifPath} alt="Correct GIF" />
       )}
       {correctGuess === false && (
-        <img className="gif" src={wrongGif} alt="Wrong GIF" />
+        <img className="gif" src={gifPath} alt="Wrong GIF" />
       )}
 
       <div className="movie-container">
